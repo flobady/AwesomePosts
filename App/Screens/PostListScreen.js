@@ -4,6 +4,8 @@ import {
 	View,
 	StyleSheet
 } from 'react-native';
+import { connect } from 'react-redux';
+import * as actions from '../Actions';
 
 const PostListScreen = () => {
 	return(
@@ -13,7 +15,9 @@ const PostListScreen = () => {
 	);
 }
 
-export default PostListScreen;
+const mapStateToProps = ({ posts }) => ({ posts });
+
+export default connect(mapStateToProps, actions)(PostListScreen);
 
 const styles = StyleSheet.create({
 	container: {
