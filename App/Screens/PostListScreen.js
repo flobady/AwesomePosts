@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { 
 	Text,
 	View,
@@ -7,12 +7,20 @@ import {
 import { connect } from 'react-redux';
 import * as actions from '../Actions';
 
-const PostListScreen = () => {
-	return(
-		<View style={styles.container}>
-			<Text>PostListScreen</Text>
-		</View>
-	);
+class PostListScreen extends Component {
+
+	componentDidMount() {
+		this.props.getPosts();
+	}
+
+	render() {
+		console.log('posts', this.props.posts)
+		return(
+			<View style={styles.container}>
+				<Text>PostListScreen</Text>
+			</View>
+		);
+	}
 }
 
 const mapStateToProps = ({ posts }) => ({ posts });
