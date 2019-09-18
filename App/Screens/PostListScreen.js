@@ -11,11 +11,17 @@ import PostItem from '../Component/PostItem';
 
 class PostListScreen extends Component {
 
+	state = {
+		page: 1
+	}
+
 	componentDidMount() {
 		this.props.getPosts();
 	}
 
-	sortPostItem = () => this.props.posts.sort((a,b) =>  a.title.localeCompare(b.title));
+	getItems = () => this.props.posts.slice(0, 10 * this.state.page); // page size is 10
+
+	getNextItems = () => this.setState({ page: this.state.page + 1 });
 
 	renderPostItem = ({ item }) => <PostItem post={item}/>;
 
@@ -23,11 +29,11 @@ class PostListScreen extends Component {
 		return(
 			<View style={styles.container}>
 				<FlatList
-					data={this.sortPostItem()}
+					data={this.getItems()}
 					keyExtractor={item => item.id.toString()}
 					renderItem={this.renderPostItem}
-					onEndReached={()=>console.log('pagination, fetch next messages')}
-					onEndReachedThreshold={0.5}
+					onEndReached={this.getNextItems}
+					onEndReachedThreshold={0} // we trigger pagination only on end reach
 				/>
 			</View>
 		);

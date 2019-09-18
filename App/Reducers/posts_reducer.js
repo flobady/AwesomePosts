@@ -5,8 +5,8 @@ export default () => {
 	const postsList = (state = [], action) => {
 		switch(action.type){
 			case Types.GET_POSTS_SUCCESS:
-				console.log("reducersss", action.payload.data)
-				return action.payload.data;
+				// we keep an ordered store
+				return action.payload.data.sort((a,b) =>  a.title.localeCompare(b.title));
 			default:
 				return state;
 		}
