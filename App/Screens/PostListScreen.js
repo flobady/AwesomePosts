@@ -15,13 +15,15 @@ class PostListScreen extends Component {
 		this.props.getPosts();
 	}
 
+	sortPostItem = () => this.props.posts.sort((a,b) =>  a.title.localeCompare(b.title));
+
 	renderPostItem = ({ item }) => <PostItem post={item}/>;
 
 	render() {
 		return(
 			<View style={styles.container}>
 				<FlatList
-					data={this.props.posts}
+					data={this.sortPostItem()}
 					keyExtractor={item => item.id.toString()}
 					renderItem={this.renderPostItem}
 					onEndReached={()=>console.log('pagination, fetch next messages')}
