@@ -1,16 +1,28 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import PostPropTypes from './PostPropTypes';
+import { Colors, Metrics } from '../Theme';
 
-const PostItem = ({post}) => {
+const PostItem = ({post: { title }}) => {
 	return(
-		<>
-			<Text>{post.title}</Text>
-		</>
+		<View style={styles.postContainer}>
+			<Text>{title}</Text>
+		</View>
 	)
 }
 
 export default PostItem;
+
+const styles = StyleSheet.create({
+	postContainer: {
+		borderWidth: 1,
+		borderColor: Colors.text,
+		padding: Metrics.smallPadding,
+		borderRadius: Metrics.smallRadius,
+		marginLeft: Metrics.smallMargin,
+		marginRight: Metrics.smallMargin
+	}
+})
 
 PostItem.propTypes = {
 	post: PostPropTypes,
