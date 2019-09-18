@@ -1,6 +1,6 @@
 # AwesomePosts
 
-INTRODUCTION
+INTRODUCTION <br />
 This project is initiated with react-native init
 It has below functionnalities:
   - Welcome page + call to action to Post list page
@@ -9,16 +9,16 @@ It has below functionnalities:
   - A spinner appears while loading
   - Error message will be displayed if fetching the Api fails
 
-INSTALLATION
+INSTALLATION <br />
 - Clone the git repo
 - Run yarn
 
 For iOS: react-native run:ios
 
-NEXT STEP
+NEXT STEP <br />
 We could centralize language, and create high order component to embed the error and spinner management
 
-COMMIT LIST
+COMMIT LIST <br />
 a974f47938f29ee51484b1f22324655b624e640a (HEAD -> master) Add loading spinner while fetching
 d47ea977575eee9eaaf480f1652928f8dab43ec3 (origin/master) Manage errors for get posts
 c586e902b595af3138fb0271c51faa4b060d2518 Create styles for WelcomeScreen and PostScreen
