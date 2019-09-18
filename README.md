@@ -13,7 +13,11 @@ INSTALLATION <br />
 - Clone the git repo
 - Run yarn
 
-For iOS: react-native run:ios
+For iOS: 
+cd ios
+pod install
+cd ..
+react-native run:ios
 
 NEXT STEP <br />
 We could centralize language, and create high order component to embed the error and spinner management
