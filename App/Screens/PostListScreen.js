@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { 
-	Text,
 	View,
 	StyleSheet,
 	FlatList
@@ -8,6 +7,8 @@ import {
 import { connect } from 'react-redux';
 import * as actions from '../Actions';
 import PostItem from '../Component/PostItem';
+import PostPropTypes from '../Component/PostPropTypes';
+import { PropTypes } from 'prop-types';
 
 class PostListScreen extends Component {
 
@@ -51,3 +52,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center'
 	}
 })
+
+PostListScreen.propTypes = {
+	posts: PropTypes.arrayOf(PostPropTypes).isRequired,
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { PropTypes } from 'prop-types';
+import PostPropTypes from './PostPropTypes';
 
 const PostItem = ({post}) => {
 	return(
@@ -13,7 +13,5 @@ const PostItem = ({post}) => {
 export default PostItem;
 
 PostItem.propTypes = {
-	post: PropTypes.shape({
-		title: PropTypes.string
-	}).isRequired,
+	post: PostPropTypes,
 }
