@@ -3,10 +3,10 @@ import { combineReducers } from 'redux';
 
 export default () => {
 	const postsList = (state = [], action) => {
-		console.log("reducersss", action)
 		switch(action.type){
 			case Types.GET_POSTS_SUCCESS:
-				return action.payload;
+				console.log("reducersss", action.payload.data)
+				return action.payload.data;
 			default:
 				return state;
 		}

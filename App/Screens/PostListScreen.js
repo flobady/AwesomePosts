@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import { 
 	Text,
 	View,
-	StyleSheet
+	StyleSheet,
+	FlatList
 } from 'react-native';
 import { connect } from 'react-redux';
 import * as actions from '../Actions';
+import PostItem from '../Component/PostItem';
 
 class PostListScreen extends Component {
 
@@ -13,17 +15,24 @@ class PostListScreen extends Component {
 		this.props.getPosts();
 	}
 
+	renderPostItem = ({ item }) => <PostItem post={item}/>;
+
 	render() {
-		console.log('posts', this.props.posts)
 		return(
 			<View style={styles.container}>
-				<Text>PostListScreen</Text>
+				<FlatList
+					data={this.props.posts}
+					keyExtractor={item => item.id.toString()}
+					renderItem={this.renderPostItem}
+					onEndReached={()=>console.log('pagination, fetch next messages')}
+					onEndReachedThreshold={0.5}
+				/>
 			</View>
 		);
 	}
 }
 
-const mapStateToProps = ({ posts }) => ({ posts });
+const mapStateToProps = ({ posts: { postsList } }) => ({ posts: postsList });
 
 export default connect(mapStateToProps, actions)(PostListScreen);
 
