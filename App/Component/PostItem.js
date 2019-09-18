@@ -13,5 +13,7 @@ const PostItem = ({post}) => {
 export default PostItem;
 
 PostItem.propTypes = {
-	post: PropTypes.object
+	post: PropTypes.shape({
+		title: PropTypes.string
+	}).isRequired,
 }
