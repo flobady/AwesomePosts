@@ -8,7 +8,12 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react'
 
 const rootNavigator = createStackNavigator({
-  Welcome: WelcomeScreen,
+  Welcome: {
+    screen: WelcomeScreen,
+    navigationOptions: {
+      headerBackTitle: 'Retour',
+    }
+  },
   PostList: PostListScreen
 });
 

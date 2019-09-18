@@ -5,15 +5,16 @@ import {
 	Button,
 	StyleSheet
 } from 'react-native';
+import { Colors } from '../Theme';
 
 const WelcomeScreen = ({navigation}) => {
 	return(
 		<View style={styles.container}>
 			<Button
-				title='Navigate'
+				title='Ma liste de postes'
 				onPress={()=>navigation.navigate('PostList')}
+				{...styles.button}
 			/>
-			<Text>WelcomeScreen</Text>
 		</View>
 	);
 }
@@ -25,5 +26,8 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center'
+	},
+	button: {
+		color: Colors.primary
 	}
 })
