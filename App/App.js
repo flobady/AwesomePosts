@@ -5,6 +5,7 @@ import WelcomeScreen from './Screens/WelcomeScreen';
 import PostListScreen from './Screens/PostListScreen';
 import store from './Store';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/lib/integration/react'
 
 const rootNavigator = createStackNavigator({
   Welcome: WelcomeScreen,
@@ -15,8 +16,10 @@ const RootNavigation = createAppContainer(rootNavigator);
 
 const App = () => {
   return (
-      <Provider store={store}>
-        <RootNavigation/>
+      <Provider store={store.store}>
+        <PersistGate loading={null} persistor={store.persistor}>
+          <RootNavigation/>
+        </PersistGate>
       </Provider>
   );
 }
