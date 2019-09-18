@@ -44,12 +44,13 @@ class PostListScreen extends Component {
 					ItemSeparatorComponent={this.renderSeparator}
 					ListEmptyComponent={<Text>Aucun post!</Text>}
 				/>
+				{ this.props.isFailed && <Text>Error</Text> }
 			</View>
 		);
 	}
 }
 
-const mapStateToProps = ({ posts: { postsList } }) => ({ posts: postsList });
+const mapStateToProps = ({ posts: { postsList, isFetching, isFailed } }) => ({ posts: postsList, isFetching, isFailed });
 
 export default connect(mapStateToProps, actions)(PostListScreen);
 

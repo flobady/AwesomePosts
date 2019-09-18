@@ -8,7 +8,8 @@ function* getPosts() {
 		const result = yield call(api.getPosts);
 		yield put(actions.getPostsSuccess(result));
 	} catch (error) {
-		console.log(error)
+		console.log(error);
+		yield put(actions.getPostsFail());
 	}
 }
 

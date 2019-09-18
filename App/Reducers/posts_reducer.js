@@ -16,8 +16,13 @@ export default () => {
 		return !!(action.type === Types.GET_POSTS_REQUEST)
 	}
 
+	const isFailed = (state = false, action) => {
+		return !!(action.type === Types.GET_POSTS_FAIL)
+	}
+
 	return combineReducers({
 		postsList,
-		isFetching
+		isFetching,
+		isFailed
 	})
 }
