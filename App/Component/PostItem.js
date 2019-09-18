@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import PostPropTypes from './PostPropTypes';
-import { Colors, Metrics } from '../Theme';
+import { Colors, Metrics, Fonts } from '../Theme';
 
 const PostItem = ({post: { title }}) => {
 	return(
 		<View style={styles.postContainer}>
-			<Text>{title}</Text>
+			<Text style={styles.title}>{title}</Text>
 		</View>
 	)
 }
@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
 		borderRadius: Metrics.smallRadius,
 		marginLeft: Metrics.smallMargin,
 		marginRight: Metrics.smallMargin
+	},
+	title: {
+		fontFamily: Fonts.fontFamily.main
 	}
 })
 

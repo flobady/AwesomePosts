@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { 
 	View,
+	Text,
 	StyleSheet,
 	FlatList
 } from 'react-native';
@@ -9,6 +10,7 @@ import * as actions from '../Actions';
 import PostItem from '../Component/PostItem';
 import PostPropTypes from '../Component/PostPropTypes';
 import { PropTypes } from 'prop-types';
+import { Metrics } from '../Theme';
 
 class PostListScreen extends Component {
 
@@ -26,15 +28,21 @@ class PostListScreen extends Component {
 
 	renderPostItem = ({ item }) => <PostItem post={item}/>;
 
+	keyExtract = item => item.id.toString();
+
+	renderSeparator = () => <View style={styles.postSeparator}/>
+
 	render() {
 		return(
 			<View style={styles.container}>
 				<FlatList
 					data={this.getItems()}
-					keyExtractor={item => item.id.toString()}
+					keyExtractor={this.keyExtract}
 					renderItem={this.renderPostItem}
 					onEndReached={this.getNextItems}
 					onEndReachedThreshold={0} // we trigger pagination only on end reach
+					ItemSeparatorComponent={this.renderSeparator}
+					ListEmptyComponent={<Text>Aucun post!</Text>}
 				/>
 			</View>
 		);
@@ -50,6 +58,9 @@ const styles = StyleSheet.create({
 		flex: 1,
 		alignItems: 'center',
 		justifyContent: 'center'
+	},
+	postSeparator: {
+		height: Metrics.smallMargin
 	}
 })
 

@@ -5,13 +5,14 @@ import {
 	Button,
 	StyleSheet
 } from 'react-native';
-import { Colors } from '../Theme';
+import { Colors, Fonts } from '../Theme';
 
 const WelcomeScreen = ({navigation}) => {
 	return(
 		<View style={styles.container}>
+			<Text style={styles.title}>Bienvenue dans Awesome Posts!</Text>
 			<Button
-				title='Ma liste de postes'
+				title='Voir mes postes'
 				onPress={()=>navigation.navigate('PostList')}
 				{...styles.button}
 			/>
@@ -29,5 +30,10 @@ const styles = StyleSheet.create({
 	},
 	button: {
 		color: Colors.primary
+	},
+	title: {
+		color: Colors.primary,
+		fontFamily: Fonts.fontFamily.main,
+		fontSize: Fonts.size.h1
 	}
 })
